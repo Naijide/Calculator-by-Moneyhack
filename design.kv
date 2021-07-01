@@ -1,0 +1,1021 @@
+<HomeScreen>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 1
+            size_hint: 0.5,0.5
+            padding: 20,20
+            spacing: 10,10
+            Image:
+                source: "CalculatorIcon.png"
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20
+            RelativeLayout:
+                Button:
+                    text: "Finance Calculator"
+                    font_size: '0.3cm'
+                    on_press: root.switch_to_finance()
+                    size_hint:0.8,0.8
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+            RelativeLayout:
+                Button:
+                    text: "Math Calculator"
+                    on_press: root.switch_to_calculatorScreen()
+                    font_size: '0.3cm'
+                    size_hint: 0.8,0.8
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            RelativeLayout:
+                Button:
+                    text: "Measurement Conversion"
+                    on_press: root.switch_to_measurement()
+                    font_size: '0.3cm'
+                    size_hint: 0.8,0.8
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        GridLayout:
+            cols: 2
+            size_hint: 0.3,0.3
+            padding: 20,20
+            spacing: 10,10
+            Button:
+                text: "About Us"
+                on_press: root.switch_to_about_us()
+                font_size: '0.3cm'
+            Button:
+                text: "User Guide"
+                on_press: root.switch_to_user_guide()
+                font_size: '0.3cm'
+###########################################
+        
+<FinanceCalc>:
+    GridLayout:
+        cols: 1
+        padding: 25,25
+        GridLayout:
+            cols: 1
+            size_hint: 0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.return_home()
+                    pos_hint: {'center_x':0.12, 'center_y':0.5}
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20
+            size_hint:0.6,0.6
+            RelativeLayout:
+                Label:
+                    text: "Finance Calculators"
+                    font_size: '0.3cm'
+                    pos_hint: {'center_x':0.5, 'center_y':0.8}
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20
+            RelativeLayout:
+                Button:
+                    text: "Mortgage Payment"
+                    font_size: '0.3cm'
+                    on_press: root.switch_to_mortgage()
+                    size_hint: 0.8,0.8
+                    pos_hint: {'center_x':0.5, 'center_y':0.5}
+            RelativeLayout:
+                Button:
+                    text: "Investments"
+                    font_size: '0.3cm'
+                    on_press: root.switch_to_investment()
+                    size_hint: 0.8,0.8
+                    pos_hint: {'center_x':0.5, 'center_y':0.5}
+                    
+                
+
+
+<MortgageCalc>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols: 2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_finance()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1
+            size_hint: 0.1,0.1
+            Label:
+                text: "Mortgage Payments"
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 20
+            Label:
+                text: "Home Price"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: homeprice
+                font_size: '0.3cm'
+                size_hint: 5,1
+            Label:
+                text: "$"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Down Payment"
+                font_size: '0.3cm'
+            Label:
+                text: ""
+
+            TextInput:
+                id: downpayment
+                font_size: '0.3cm'
+            Label:
+                text: "%"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Interest Rate"
+                font_size: '0.3cm'
+            Label:
+                text: ""
+
+            TextInput:
+                id: rate
+                font_size: '0.3cm'
+            Label:
+                text: "%"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Period"
+                font_size: '0.3cm'
+            Label:
+                text: ""
+
+            TextInput:
+                id: period
+                font_size: '0.3cm'
+            Label:
+                text: "yr"
+                font_size: '0.3cm'
+
+            Label:
+                text: "Property Taxes (optional)"
+                font_size: '0.3cm'
+            Label:
+                text: ""
+
+            TextInput:
+                id: prop_taxes
+                font_size: '0.3cm'
+            Label:
+                text: "%"
+                font_size: '0.3cm'
+
+            
+        GridLayout:
+            cols: 1
+            size_hint: 0.4,0.4
+            ScrollView:
+                Label:
+                    id: answer
+                    text: ""
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: "Calculate"
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    on_press: root.calculate(root.ids.homeprice.text, root.ids.downpayment.text, root.ids.rate.text, root.ids.period.text, root.ids.prop_taxes.text)
+
+
+        
+
+<InvestmentCalc>:
+    GridLayout:
+        cols: 1
+        padding: 25,25
+        GridLayout:
+            cols: 1
+            size_hint: 0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_finance()
+                    pos_hint: {'center_x':0.12, 'center_y':0.5}
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20
+            size_hint:0.6,0.6
+            RelativeLayout:
+                Label:
+                    text: "Investment Calculators"
+                    font_size: '0.3cm'
+                    pos_hint: {'center_x':0.5, 'center_y':0.8}
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20    
+            Button:
+                text: "Interest Calculator"
+                font_size: '0.3cm'
+                on_press: root.switch_to_interest()
+            Button:
+                text: "Inflation Calculator"
+                on_press: root.switch_to_inflation()
+                font_size: '0.3cm'
+            Button:
+                text: "Present Value Calculator"
+                on_press: root.switch_to_pv()
+                font_size: '0.3cm'
+                
+
+<InterestCalc>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols:2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_investment()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1
+            size_hint: 0.1,0.1
+            Label:
+                text: "Interest"
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 20
+            Label:
+                text: "Principal"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: pri
+                font_size: '0.3cm'
+                size_hint: 5,1
+            Label:
+                text: "$"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Interest Rate"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: rate
+                font_size: '0.3cm'
+            Label:
+                text: "%"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Period"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: period
+                font_size: '0.3cm'
+            Label:
+                text: "yr"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Monthly Contribution"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: mc
+                font_size: '0.3cm'
+            Label:
+                text: "$"
+                font_size: '0.3cm'
+
+            Label:
+                text: "Compound (click to change)"
+                font_size: '0.3cm'
+            Label:
+
+            Spinner:
+                id: compound
+                text: 'Compounding Period'
+                font_size: '0.3cm'
+                values: ["Annually", "Quarterly", "Monthly"]
+
+
+
+            
+        GridLayout:
+            cols: 1
+            size_hint: 0.4,0.4
+            ScrollView:
+                Label:
+                    id: answer
+                    text: ""
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: "Calculate"
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    on_press: root.calculate(root.ids.pri.text, root.ids.rate.text, root.ids.period.text, root.ids.mc.text, root.ids.compound.text)
+
+
+
+<InflationCalc>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols:2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_investment()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1
+            size_hint: 0.1,0.1
+            Label:
+                text: "Inflation"
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 20
+            Label:
+                text: "Price"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: price
+                font_size: '0.3cm'
+                size_hint: 5,1
+            Label:
+                text: "$"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Inflation Rate"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: rate
+                font_size: '0.3cm'
+            Label:
+                text: "%"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Period"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: period
+                font_size: '0.3cm'
+            Label:
+                text: "yr"
+                font_size: '0.3cm'
+           
+        GridLayout:
+            cols: 1
+            size_hint: 0.4,0.4
+            ScrollView:
+                Label:
+                    id: answer
+                    text: ""
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: "Calculate"
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    on_press: root.calculate(root.ids.price.text, root.ids.rate.text, root.ids.period.text)
+
+<PresentValCalc>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols:2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_investment()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1
+            size_hint: 0.1,0.1
+            Label:
+                text: "Present Value"
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 20
+            Label:
+                text: "Future Value"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: fv
+                font_size: '0.3cm'
+                size_hint: 5,1
+            Label:
+                text: "$"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Interest Rate"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: rate
+                font_size: '0.3cm'
+            Label:
+                text: "%"
+                font_size: '0.3cm'
+            
+            Label:
+                text: "Period"
+                font_size: '0.3cm'
+            Label:
+
+            TextInput:
+                id: period
+                font_size: '0.3cm'
+            Label:
+                text: "yr"
+                font_size: '0.3cm'
+           
+        GridLayout:
+            cols: 1
+            size_hint: 0.4,0.4
+            ScrollView:
+                Label:
+                    text: ""
+                    id: answer
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: "Calculate"
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    on_press: root.calculate(root.ids.fv.text,root.ids.rate.text,root.ids.period.text)
+
+
+
+###########################################
+
+<CalculatorScreen>:
+    GridLayout:
+        cols: 1
+        padding:20,20
+        GridLayout:
+            cols: 1
+            size_hint:0.6,0.6
+            padding: 10,10
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {'center_x':0.12, 'center_y':0.5}
+                
+        GridLayout:
+            cols: 1
+            padding: 10,10
+            size_hint: 0.9,0.9
+            TextInput:
+                id: entry
+                font_size: '0.3cm'
+                multiline: False
+        GridLayout:
+            cols: 4
+            spacing:12,12
+            padding:10,10
+            Label:
+            Label:
+            Label:
+            Button:
+                text: 'AC'
+                font_size: '0.3cm'
+                on_press: entry.text = ""
+        GridLayout:
+            cols:4
+            spacing:12,12
+            padding: 10,10
+            Button:
+                text:'7'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'8'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'9'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'+'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            
+        GridLayout:
+            cols:4
+            spacing:12,12
+            padding: 10,10
+            Button:
+                text:'4'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'5'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'6'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'-'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+        GridLayout:
+            cols:4
+            spacing:12,12
+            padding: 10,10
+            Button:
+                text:'1'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'2'
+                font_size:'0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'3'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'*'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+        GridLayout:
+            cols:4
+            spacing:12,12
+            padding: 10,10
+            Button:
+                text:'0'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'.'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+            Button:
+                text:'='
+                font_size: '0.3cm'
+                on_press: root.calculate(entry.text)
+            Button:
+                text:'/'
+                font_size: '0.3cm'
+                on_press: entry.text += self.text
+
+
+
+
+
+###########################################
+
+<MeasurementScreen>:
+    GridLayout:
+        cols: 1
+        padding: 25,25
+        GridLayout:
+            cols: 1
+            size_hint: 0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.return_to_home()
+                    pos_hint: {'center_x':0.12, 'center_y':0.5}
+
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20
+            size_hint:0.4,0.4
+            RelativeLayout:
+                Label:
+                    text: "Measurements"
+                    font_size: '0.3cm'
+                    pos_hint: {'center_x':0.5, 'center_y':0.8}
+        GridLayout:
+            cols: 1
+            padding: 20,20
+            spacing: 20,20 
+            Button:
+                text: 'Length' 
+                font_size: '0.3cm'
+                on_press: root.switch_to_length()       
+            Button:
+                text: 'Mass'
+                font_size: '0.3cm'
+                on_press: root.switch_to_mass()
+            Button:
+                text: 'Volume'
+                font_size: '0.3cm'
+                on_press: root.switch_to_volume()
+
+
+
+<LengthScreen>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols:2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_measurement()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.return_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1 
+            size_hint: 0.1,0.1
+            Label:
+                text: 'Length'
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 15,15
+            spacing: 7,7
+            Label:
+                text: 'From: '
+                font_size:'0.3cm'
+            RelativeLayout:
+                Spinner:
+                    id: lengthf
+                    size_hint: 1,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    text: "Length 1"
+                    values: ["meters","kilometers","centimeters","inches","feet","yards","miles"]
+            Label:
+                text: 'To: '
+                font_size:'0.3cm'
+            RelativeLayout:
+                Spinner:
+                    id: lengtht
+                    text: "Length 2"
+                    size_hint: 1,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    values: ["meters","kilometers","centimeters","inches","feet","yards","miles"]
+            Label:
+                text: ' Input: '
+                font_size: '0.3cm'
+            TextInput:
+                id: input
+                font_size: '0.3cm'
+                size_hint: 4,0.2
+
+        GridLayout:
+            cols: 1
+            size_hint: 0.5,0.5
+            ScrollView:
+                Label:
+                    id: answer
+                    text: ""
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+
+            RelativeLayout:
+                Button:
+                    text: 'Calculate'    
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6} 
+                    on_press: root.calculate(root.ids.lengthf.text, root.ids.lengtht.text,root.ids.input.text)      
+
+<MassScreen>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols: 2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_measurement()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.return_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1 
+            size_hint: 0.1,0.1
+            Label:
+                text: 'Mass'
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 15,15
+            spacing: 7,7
+            Label:
+                text: 'From: '
+                font_size:'0.3cm'
+            RelativeLayout:
+                Spinner:
+                    id: massf
+                    size_hint: 1,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    text: "Mass 1"
+                    values: ["grams","kilograms","pounds","ounces"]
+            Label:
+                text: 'To: '
+                font_size:'0.3cm'
+            RelativeLayout:
+                Spinner:
+                    id: masst
+                    size_hint: 1,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    text: "Mass 2"
+                    values: ["grams","kilograms","pounds","ounces"]
+            Label:
+                text: ' Input: '
+                font_size:'0.3cm'
+            TextInput:
+                id: input
+                font_size:'0.3cm'
+                size_hint: 4,0.2
+
+        GridLayout:
+            cols: 1
+            size_hint: 0.5,0.5
+            ScrollView:
+                Label:
+                    id: answer
+                    text: ""
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: 'Calculate'
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6} 
+                    on_press: root.calculate(root.ids.massf.text,root.ids.masst.text,root.ids.input.text)
+
+<VolumeScreen>:
+    GridLayout:
+        cols: 1
+        padding: 15,15
+        GridLayout:
+            cols: 2
+            size_hint:0.09,0.09
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_measurement()
+                    pos_hint: {'center_x':0.2, 'center_y':0.5}
+            RelativeLayout:
+                ImageButton:
+                    source: "Home_button.png"
+                    on_press: root.return_to_home()
+                    pos_hint: {'center_x':0.8, 'center_y':0.5}
+        GridLayout:
+            cols: 1 
+            size_hint: 0.1,0.1
+            Label:
+                text: 'Volume'
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 2
+            padding: 15,15
+            spacing: 7,7
+            Label:
+                text: 'From: '
+                font_size: '0.3cm'
+            RelativeLayout:
+                Spinner:
+                    id: volumef
+                    size_hint: 1,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    text: "Volume 1"
+                    values: ["liters","gallons","cubic meters"]
+            Label:
+                text: 'To: '
+                font_size: '0.3cm'
+            RelativeLayout:
+                Spinner:
+                    id: volumet
+                    size_hint: 1,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    text: "Volume 2"
+                    values: ["liters","gallons","cubic meters"]
+            Label:
+                text: ' Input: '
+                font_size: '0.3cm'
+            TextInput:
+                id: input
+                font_size: '0.3cm'
+                size_hint: 4,0.2
+
+        GridLayout:
+            cols: 1
+            size_hint: 0.5,0.5
+            ScrollView:
+                Label:
+                    id: answer
+                    text: ""
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+            RelativeLayout:
+                Button:
+                    text: 'Calculate'
+                    font_size: '0.3cm'
+                    size_hint: 0.6,0.6
+                    pos_hint: {'center_x':0.5, 'center_y':0.6}
+                    on_press: root.calculate(root.ids.volumef.text,root.ids.volumet.text,root.ids.input.text)
+
+
+        
+###########################################
+<AboutUs>:
+    GridLayout:
+        cols: 1
+        padding: 10,10
+        GridLayout:
+            cols: 1
+            size_hint: 0.08,0.08
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {"center_x": 0.12, "center_y": 0.5}
+        GridLayout:
+            cols: 1
+            size_hint: 0.1,0.1
+            Label:
+                text: "About Us"
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 1
+            padding:10,10
+            ScrollView:
+                Label:
+                    text: ' Fintech no doubt is the future, there are endless possibilities and ways to create value. But many find such a fast paced industry hard to keep up, especially for beginners who are new to fintech but are passionate about learning. \n\n Moneyhack.co is a fintech community for beginners who are dreaming to innovate, build, and revolutionize the finance industry with technology. This community gives everyone a platform to not only learn about fintech, but discuss ideas, network, build and showcase projects to a community of supportive individuals. \n\n This all-in-one calculator app is a product by Moneyhack.co, also a small “hobby project” built by the owner to encourage others to get creative, start small, find and solve problems.\n\n Remember: \n    "Even the greatest was once a beginner. Don’t be afraid to take that first step.”  - Muhammad Ali'
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+        GridLayout:
+            cols: 2
+            padding: 2,2
+            spacing: 15,15
+            size_hint: 0.12,0.12
+            Button:
+                text: "Instagram"
+                font_size: '0.3cm'
+                on_press: root.go_to_instagram()
+            Button:
+                text: "Website"
+                font_size: '0.3cm'
+                on_press: root.go_to_website()
+
+
+<UserGuide>:
+    GridLayout:
+        cols: 1
+        padding: 10,10
+        GridLayout:
+            cols: 1
+            size_hint: 0.08,0.08
+            RelativeLayout:
+                ImageButton:
+                    source: "Return_button.png"
+                    on_press: root.back_to_home()
+                    pos_hint: {"center_x": 0.12, "center_y": 0.5}
+        GridLayout:
+            cols: 1
+            size_hint: 0.2,0.2
+            Label:
+                text: "How To Use This App"
+                font_size: '0.3cm'
+        GridLayout:
+            cols: 1
+            padding: 10,10
+            ScrollView:
+                Label:
+                    text: " This calculator is divided into 3 categories: Finance, Math, Measurements. Anything you can think of that requires calculation (that you don't want to do yourself) can be found in this app. It is truly an All-in-One calculator. \n\n Within Finance you will be able to calculate your mortgage payments, interests, price after inflation, and present value of an income in the future. \n\n With Math you get your regular calculator to do your simple arithmetics. \n\n With Measurements, you will be able to convert all sorts of measurements including length, mass, and volume."
+                    text_size: self.width - 50, None
+                    size_hint_y: None
+                    font_size: '0.3cm'
+                    height: self.texture_size[1]
+
+
+###########################################
+
+
+<RootWidget>:
+    HomeScreen:
+        name: "home_screen"
+    FinanceCalc:
+        name: "finance_calc"
+    MortgageCalc:
+        name: "mortgage_calc"
+    InvestmentCalc:
+        name: "investment_calc"
+    InterestCalc:
+        name: "interest_calc"
+    InflationCalc:
+        name: "inflation_calc"
+    PresentValCalc:
+        name: "present_val_calc"
+    CalculatorScreen:
+        name: "calculatorScreen"
+    MeasurementScreen:
+        name: "measurement_screen"
+    LengthScreen:
+        name: "length_screen"
+    MassScreen:
+        name: "mass_screen"
+    VolumeScreen:
+        name: "volume_screen"
+    AboutUs:
+        name: "about_us_screen"
+    UserGuide:
+        name: "user_guide_screen"
